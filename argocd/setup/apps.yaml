@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+spec:
+  syncPolicy:
+    automated: {}
+  project: default
+  source:
+    repoURL: git@github.com:osvaldotoja/gitops-demo.git
+    targetRevision: HEAD
+    path: apps/staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
